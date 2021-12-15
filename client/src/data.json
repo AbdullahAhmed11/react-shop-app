@@ -29,6 +29,6 @@
         "imageUrl": "/images/product4.png",
         "description": "this is one product",
         "price": 60,
-        "size": ["M", "XL"]
+        "size": ["M", "XXL"]
     }
 ]
