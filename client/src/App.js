@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import Filter from "./components/Filter/Filter";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
+import "./index.css"
 // import { words } from "./words";
 import data from "./data.json"
 
@@ -12,8 +14,11 @@ function App() {
       <Header/>
       <main>
         <div className="wrapper">
-          <Products products={products}/>
-          <div className="filterEl">filter</div>
+          <Products products={products} />
+          <div className="filterEl">
+
+          <Filter/>
+          </div>
         </div>
       </main>
       <Footer/>
