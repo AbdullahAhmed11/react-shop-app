@@ -31,3 +31,24 @@
     }
   }
 }
+
+.product-info {
+  img {
+    width: 40%;
+    display: block;
+    margin: 20px auto;
+  }
+  p {
+    font-size: 20px;
+    color: #2a5ea2;
+    text-align: center;
+    margin: 0 10px;
+  }
+}
+.close-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
