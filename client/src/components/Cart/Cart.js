@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "../../css/Cart/Cart.css";
+import CheckoutFom from '../CheckoutForm/CheckoutFom';
 function Cart(props) {
+    const [showForm, setShowForm] = useState(false);
+    const [value, setValue] = useState("");
+
+    const submitOrder  = (e) => {
+        e.preventDefault();
+        const order = {
+            name: value.name,
+            email: value.emial
+        }
+        console.log(order)
+    } 
+    const handleChange = (e) => {
+        console.log(e.target.name)
+        setValue( (prevState) => ({...prevState, [e.target.name]: e.target.value}) )
+    }
     return (
         <div className="cart-wrapper">
             <div className="cart-title">{props.cartItems.length === 0 ? 'Cart Is Empty' : <p>
-                There is {props.cartItems.length} In Your Cart
+                There is {props.cartItems.length} Items In Your Cart
                 </p>}</div>
             <div className="cart-items">
             {props.cartItems.map(item => (
@@ -23,6 +39,19 @@ function Cart(props) {
                     </div>
             ))}
             </div>
+            {
+                    props.cartItems.length !== 0 && 
+                (
+                    <div className='cart-footer'>
+                        <div className='total'>Total: {props.cartItems.reduce((acc,p) => {
+                            return acc + p.price;
+                        }, 0)}</div>
+                        <button onClick={() => setShowForm(true)}>Selcet prodcut</button>
+                    </div>
+                )
+            }
+
+            <CheckoutFom showForm={showForm} setShowForm={setShowForm} submitOrder={submitOrder} handleChange={handleChange} />
         </div>
     )
 }

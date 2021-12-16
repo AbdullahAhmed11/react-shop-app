@@ -19,7 +19,9 @@ function App() {
     setSize(e.target.value);
     if (e.target.value == "ALL") {
       setProducts(data);
-    } else {
+    } 
+    else 
+    {
       let productsClone = [...products];
       let newProducts = productsClone.filter(p => p.sizes.indexOf(e.target.value) != -1);
       setProducts(newProducts);
