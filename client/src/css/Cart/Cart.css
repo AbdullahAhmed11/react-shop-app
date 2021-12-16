@@ -25,7 +25,18 @@
   align-items: center;
   flex: 1;
 }
-.cart-item button {
+
+.cart-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+.cart-footer .total {
+  font-size: 25px;
+}
+
+button {
   display: block;
   padding: 7px;
   cursor: pointer;
