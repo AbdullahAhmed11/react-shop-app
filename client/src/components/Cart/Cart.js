@@ -30,7 +30,7 @@ function Cart(props) {
                             <div>
                                 <p>title: {item.title}</p>
                                 <p>qty: {item.qty} </p>
-                                <p>price: ${item.price}</p>
+                                <p>price: ${item.price * item.qty}</p>
                             </div>
                                 <button onClick={() => props.removeFromCart(item)}>
                                     Remove
@@ -44,7 +44,7 @@ function Cart(props) {
                 (
                     <div className='cart-footer'>
                         <div className='total'>Total: {props.cartItems.reduce((acc,p) => {
-                            return acc + p.price;
+                            return acc + p.price * p.qty;
                         }, 0)}</div>
                         <button onClick={() => setShowForm(true)}>Selcet prodcut</button>
                     </div>
