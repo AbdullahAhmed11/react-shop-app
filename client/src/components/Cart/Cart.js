@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import "../../css/Cart/Cart.css";
 import CheckoutFom from '../CheckoutForm/CheckoutFom';
+import Bounce from 'react-reveal/Bounce';
+
 function Cart(props) {
     const [showForm, setShowForm] = useState(false);
     const [value, setValue] = useState("");
@@ -18,6 +20,7 @@ function Cart(props) {
         setValue( (prevState) => ({...prevState, [e.target.name]: e.target.value}) )
     }
     return (
+        <Bounce left cascade>
         <div className="cart-wrapper">
             <div className="cart-title">{props.cartItems.length === 0 ? 'Cart Is Empty' : <p>
                 There is {props.cartItems.length} Items In Your Cart
@@ -53,6 +56,7 @@ function Cart(props) {
 
             <CheckoutFom showForm={showForm} setShowForm={setShowForm} submitOrder={submitOrder} handleChange={handleChange} />
         </div>
+        </Bounce>
     )
 }
 export default Cart
