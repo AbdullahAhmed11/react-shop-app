@@ -1,7 +1,7 @@
 [
     {
         "id": "id1",
-        "title": "product 1",
+        "title": "Item Shoas",
         "imageUrl": "/images/product1.jpeg",
         "description": "this is one product",
         "price": 30,
@@ -9,7 +9,7 @@
     },
     {
         "id": "id2",
-        "title": "product 2",
+        "title": "Item Camara",
         "imageUrl": "/images/product2.jpeg",
         "description": "this is one product",
         "price": 40,
@@ -17,7 +17,7 @@
     },
     {
         "id": "id3",
-        "title": "product 3",
+        "title": "Item Air-boads",
         "imageUrl": "/images/product3.jpg",
         "description": "this is one product",
         "price": 80,
@@ -25,7 +25,7 @@
     },
     {
         "id": "id4",
-        "title": "product 4",
+        "title": "Item Keyboard",
         "imageUrl": "/images/product4.png",
         "description": "this is one product",
         "price": 60,
