@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import "../../css/Cart/Cart.css";
 import CheckoutFom from '../CheckoutForm/CheckoutFom';
 import Bounce from 'react-reveal/Bounce';
-
+import { connect } from 'react-redux';
+import {removeFromCart} from '../../store/action/cart'
 function Cart(props) {
     const [showForm, setShowForm] = useState(false);
     const [value, setValue] = useState("");
@@ -59,4 +60,8 @@ function Cart(props) {
         </Bounce>
     )
 }
-export default Cart
+export default connect((state) => {
+    return {
+        cartItems: state.cart.cartItems
+    }
+},{removeFromCart})(Cart)
