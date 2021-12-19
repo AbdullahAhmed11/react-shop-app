@@ -2,12 +2,10 @@ import React, {useState} from 'react';
 import "../../css/Cart/Cart.css";
 import CheckoutFom from '../CheckoutForm/CheckoutFom';
 import Bounce from 'react-reveal/Bounce';
-import Modal from "react-modal"
 import { connect } from 'react-redux';
 import {removeFromCart} from '../../store/action/cart'
 function Cart(props) {
     const [showForm, setShowForm] = useState(false);
-    const [order, setOrder] = useState(false);
     const [value, setValue] = useState("");
 
     const submitOrder  = (e) => {
@@ -22,37 +20,14 @@ function Cart(props) {
         console.log(e.target.name)
         setValue( (prevState) => ({...prevState, [e.target.name]: e.target.value}) )
     }
-    const closeModal = () => {
-        setOrder(false)
-    }
+
     return (
         <Bounce left cascade>
         <div className="cart-wrapper">
             <div className="cart-title">{props.cartItems.length === 0 ? 'Cart Is Empty' : <p>
                 There is {props.cartItems.length} Items In Your Cart
                 </p>}</div>
-        <Modal isOpen={order}>
-            <div class="order-info">
-                <span className='close-model' onClick={closeModal}>&times;</span>
-                <p className="order-success">order done success! congratulations {order.name}</p>
-                <table>
-                    <tr>
-                        <td>Name: </td>
-                        <td>{order.name}</td>
-                    </tr>
-                    <tr>
-                        <td>Email: </td>
-                        <td>{order.email}</td>
-                    </tr>
-                    <tr>
-                        <td>Total: </td>
-                        <td>{props.cartItems.reduce( (a, p) => {
-                            return a + p.price * p.qty
-                        },0)}</td>
-                    </tr>
-                </table>
-            </div>
-        </Modal>
+
             <div className="cart-items">
             {props.cartItems.map(item => (
                     <div className="cart-item" key={item.id}>
