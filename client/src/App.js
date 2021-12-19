@@ -4,9 +4,11 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 import "./index.css"
+import { Provider } from "react-redux";
 // import { words } from "./words";
 import data from "./data.json"
 import Cart from "./components/Cart/Cart";
+import store from "./store/store";
 
 function App() {
   const [products, setProducts] = useState(data)
@@ -65,7 +67,8 @@ function App() {
     setCartItems(cartItemsClone.filter(p => p.id !== product.id))
   }
   return (
-    <div className="layout">
+    <Provider store={store}>
+      <div className="layout">
       <Header/>
       <main>
         <div className="wrapper">
@@ -82,6 +85,7 @@ function App() {
       </main>
       <Footer/>
     </div>
+    </Provider>
   );
 }
 
