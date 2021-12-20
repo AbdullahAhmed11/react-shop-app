@@ -32,3 +32,21 @@ main {
 .wrapper .filterEl {
   width: 30%;
 }
+.nav ul {
+  display: flex;
+  background-color: #ddd;
+  list-style: none;
+  padding: 10px 35px;
+}
+.nav ul li a {
+  background-color: gray;
+  color: #fff;
+  display: block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav ul li a.active {
+  background-color: #2a5ea2;
+}

@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from "react";
-import Filter from "./components/Filter/Filter";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Products from "./components/Products/Products";
 import "./index.css"
 import { Provider } from "react-redux";
 // import { words } from "./words";
 import data from "./data.json"
-import Cart from "./components/Cart/Cart";
 import store from "./store/store";
-
+import {BrowserRouter, NavLink, Routes, Route} from "react-router-dom";
+import Home from "./pages/Home";
+import Orders from "./pages/Orders";
 function App() {
   const [products, setProducts] = useState(data)
   const [sort, setSort] = useState("");
@@ -67,25 +66,26 @@ function App() {
     setCartItems(cartItemsClone.filter(p => p.id !== product.id))
   }
   return (
+    <BrowserRouter>
     <Provider store={store}>
       <div className="layout">
       <Header/>
-      <main>
-        <div className="wrapper">
-          <Products products={products} addToCart={addToCart} />
-          <div className="filterEl">
-          <Filter 
-          productsNumber={products.length}
-          size={size} handleFilterBySize={handleFilterBySize} 
-          handleFilterBySort={handleFilterBySort} sort={sort}
-          />
-          </div>
+      <main>  
+        <div className="nav">
+          <ul>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/orders">Order</NavLink></li>
+          </ul>
         </div>
-          <Cart cartItems={cartItems} removeFromCart={removeFromCart}/>
+        <Routes>
+          <Route path="/" element={<Home products={products} cartItems={cartItems} sort={sort} size={size} handleFilterBySort={handleFilterBySort} handleFilterBySize={handleFilterBySize} removeFromCart={removeFromCart} addToCart={addToCart} />} />
+          <Route path="/orders" element={<Orders />} />
+        </Routes>
       </main>
       <Footer/>
     </div>
     </Provider>
+    </BrowserRouter>
   );
 }
 
